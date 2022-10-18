@@ -8,6 +8,7 @@ import {
 import { parseData } from '../api/init';
 import { createChart } from "lightweight-charts";
 import useResizeObserver from "use-resize-observer";
+import { getInitDataForCandles } from '../api';
 
 export const GridItem = ({ className, text, w }) => {
   const [price, setPrice] = useState(0);
@@ -104,35 +105,10 @@ export const GridItem = ({ className, text, w }) => {
     const candles = chart.addCandlestickSeries();
     candle.current = candles;
 
-    setLoading(true)
-    fetch(
-      `https://api.binance.com/api/v3/klines?symbol=${text}&interval=1m&limit=1000`
-    )
-      .then((res) => res.json())
-      .then((data) => {
-        
-        const cdata = data.map((d) => {
-          return {
-            time: d[0] / 1000,
-            open: parseFloat(d[1]),
-            high: parseFloat(d[2]),
-            low: parseFloat(d[3]),
-            close: parseFloat(d[4]),
-          };
-        })
-        candles.setData(cdata);
-        setLoading(false)
-      }).catch(err => {
-        console.log(err)
-        setLoading(false)
-      })
-
-
-
-
-      
-
-
+   if(openChart){
+    getInitDataForCandles(text, setLoading)
+    .then((data) => candles.setData(data))
+   }
 
       const handleResize = () => {
 				chart.applyOptions({ width: chartRef.current.clientWidth });

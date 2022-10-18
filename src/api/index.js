@@ -1,3 +1,29 @@
+//Get initial data for canldes
+export const getInitDataForCandles = async (text, setLoading) => {
+  setLoading(true);
+  try {
+    const res = await fetch(
+      `https://api.binance.com/api/v3/klines?symbol=${text}&interval=1m&limit=1000`
+    );
+    const data = await res.json();
+    const cdata = data.map((d) => {
+      return {
+        time: d[0] / 1000,
+        open: parseFloat(d[1]),
+        high: parseFloat(d[2]),
+        low: parseFloat(d[3]),
+        close: parseFloat(d[4]),
+      };
+    });
+    setLoading(false);
+
+    return cdata;
+  } catch (error) {
+    console.log(error);
+    setLoading(false);
+  }
+};
+
 // -------------------------------------- Binance --------------------------------------
 export const getCoinsFromBinance = () => {
   // const BinanceCoins = localStorage.getItem("BinanceCoins");
