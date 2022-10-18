@@ -34,10 +34,6 @@ export const MainLayout = () => {
       breakpoints={{ lg: 1200, md: 996, sm: 768, xs: 480, xxs: 0 }}
       cols={{ lg: 2, md: 1, sm: 1, xs: 1, xxs: 1 }}
       rowHeight={300}
-      onResize={(vl) => {
-        console.log(vl)
-        return;
-      }}
       isResizable={true}
       
       onLayoutChange={handleLayoutChange}>

@@ -60,7 +60,7 @@ export const LoginPage = () => {
           className='flex justify-center items-center text-xs bg-gray-600 text-white rounded-sm py-2 px-4'>
           Войти
         </button>
-        <Link to='/register' className='flex justify-center items-center text-xs text-black'>
+        <Link to='/register' className='flex justify-center items-center text-xs text-black dark:text-white'>
           Нет аккаунта ?
         </Link>
       </div>

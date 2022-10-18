@@ -7,7 +7,6 @@ import {
 } from '../api';
 import { parseData } from '../api/init';
 import { createChart } from "lightweight-charts";
-// import { Observe } from '../hooks/useObserve';
 import useResizeObserver from "use-resize-observer";
 
 export const GridItem = ({ className, text, w }) => {
@@ -161,18 +160,18 @@ export const GridItem = ({ className, text, w }) => {
                   <img className='' src="https://cryptoicons.org/api/icon/eth/200" alt="" />
                 </div>
                     <div className="coin-info">
-                        <p className="coin-name text-dark dark:text-white">{text}</p>
+                        <p onClick={() => setOpenChart((prev) => !prev)} className="coin-name text-dark cursor-pointer dark:text-white">{text}</p>
                         <p className="coin-market">{className === "BinanceCoins" ? "binance" : "bybit"}</p>
                     </div>
                 </div>
 
                 <div className={`coin-body h-full grid gap-5  ${!openChart ? "grid-cols-1" : "grid-cols-2"} justify-center items-center`}>
                     <div className="coin-price">
-                        <div onClick={() => setOpenChart((prev) => !prev)} className={`price cursor-pointer text-dark dark:text-white ${openChart ? "text-5xl" : "text-7xl"}`}>${price ? price.toFixed(1) : 0}</div>
+                        <div  className={`price  text-dark dark:text-white ${openChart ? "text-5xl" : "text-7xl"}`}>${price ? price.toFixed(1) : 0}</div>
                         <div className={`percent ${openChart ? "text-3xl" : "text-5xl"}`}>%{percent ? percent.toFixed(2) : 0} <span>({diff.toFixed(2)}$)</span></div>
                     </div>
 
-                    <div ref={chatWrapperRef} className={`h-[200px] w-full p-5   ${!openChart && "hidden"}`}>
+                    <div ref={chatWrapperRef} className={`h-[200px] w-full p-5  ${!openChart && "hidden"}`}>
                           <div ref={chartRef} className={`h-full w-full  ${loading && "hidden"}`}>
                     </div>
                     </div>

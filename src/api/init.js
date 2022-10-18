@@ -11,7 +11,7 @@ export const initSelectedByBit = [
 export const initLayout = [...initSelectedBinance, ...initSelectedByBit].map(
   ({ symbol, type }) => ({
     i: `${symbol}-${type}`,
-    x: 0,
+    x: 1,
     y: 0,
     w: 1,
     h: 1,
