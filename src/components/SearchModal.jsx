@@ -18,7 +18,7 @@ export const CustomDialog = ({BinanceCoins, ByBitCoins}) => {
   const selectedBinanceCoins = coins?.filter(c => c.type.includes("Binance"))
   const selectedByBitCoins = coins?.filter(c => c.type.includes("ByBit"))
 
-  console.log("uuuuuuu", selectedByBitCoins)
+
   
   const dispatch = useDispatch()
 
@@ -89,7 +89,6 @@ export const CustomDialog = ({BinanceCoins, ByBitCoins}) => {
               dispatch(addCoins(coin))
             }}
             onUnselect={(data) => {
-              console.log("unselected", data)
               dispatch(removeCoins(data.value._id))
 
               //!Continue
@@ -116,7 +115,6 @@ export const CustomDialog = ({BinanceCoins, ByBitCoins}) => {
               dispatch(addCoins(coin))
             }}
             onUnselect={(data) => {
-              console.log("unselected", data)
               dispatch(removeCoins(data.value._id))
             }}
             multiple

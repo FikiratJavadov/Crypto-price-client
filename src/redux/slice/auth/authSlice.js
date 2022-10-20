@@ -72,7 +72,7 @@ export const addCoins = createAsyncThunk(
         type,
       });
 
-      console.log(data);
+      
 
       return data.data.coins;
     } catch (error) {
@@ -82,11 +82,11 @@ export const addCoins = createAsyncThunk(
 );
 
 export const removeCoins = createAsyncThunk("auth/remove-coins", async (id) => {
-  console.log({ id });
+  
   try {
     const { data } = await axios.delete(`/auth/profile/coin/${id}`);
 
-    console.log({ data });
+    
 
     return data.data.coins;
   } catch (error) {

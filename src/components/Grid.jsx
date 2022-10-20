@@ -17,10 +17,6 @@ export const MainLayout = () => {
   const coins = useSelector(state => state?.auth?.user?.coins)
   const layouts = useSelector(state => state?.auth?.layouts)
 
-  console.log({layouts})
-
-  console.log(layouts)
-  console.log({coins})
 
   ////
 

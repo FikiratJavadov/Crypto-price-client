@@ -99,7 +99,7 @@ export const GridItem = ({ className, text, w }) => {
       }
     });
 
-    console.log({text, className})
+    
 
     lightweightCharts.current = chart;
     const candles = chart.addCandlestickSeries();

@@ -8,8 +8,6 @@ export function Observe(target) {
     setSize(target.current.getBoundingClientRect());
   }, [target]);
 
-  console.log({ size });
-
   // Where the magic happens
   // useResizeObserver(target, (entry) => setSize(entry.contentRect));
   return size;
