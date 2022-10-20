@@ -2,12 +2,19 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "../../../utils/axios";
 
 const token = localStorage.getItem("token");
+const layout = localStorage.getItem("layout");
 
 const initialState = {
   user: null,
   token: token ? token : "",
   isLoading: false,
   status: null,
+  layouts: {
+    lg: [],
+    md: [],
+    sm: [],
+    xs: [],
+  },
 };
 
 export const registerUser = createAsyncThunk(
@@ -98,6 +105,10 @@ export const authSlice = createSlice({
       state.status = null;
       state.coins = [];
     },
+
+    changeLayout: (state, { payload }) => {
+      state.layouts.lg = payload;
+    },
   },
   extraReducers: {
     // Register user
@@ -157,5 +168,5 @@ export const authSlice = createSlice({
 
 export const checkIsAuth = (state) => Boolean(state.auth.token);
 
-export const { logout } = authSlice.actions;
+export const { logout, changeLayout } = authSlice.actions;
 export default authSlice.reducer;

@@ -29,10 +29,10 @@ export const getCoinsFromBinance = () => {
   // const BinanceCoins = localStorage.getItem("BinanceCoins");
   // if (BinanceCoins) return Promise.resolve(JSON.parse(BinanceCoins));
 
-  return fetch(`https://api.binance.com/api/v1/exchangeInfo`)
+  return fetch(`https://api.binance.com/api/v3/exchangeInfo`)
     .then((res) => res.json())
-    .then(({ symbols }) => {
-      const BinanceCoins = symbols.map(({ symbol }) => ({ symbol }));
+    .then((data) => {
+      const BinanceCoins = data.symbols.map(({ symbol }) => ({ symbol }));
       // localStorage.setItem("BinanceCoins", JSON.stringify(BinanceCoins));
       return BinanceCoins;
     });

@@ -153,6 +153,14 @@ table {
     url("./fonts/sf-ui-display-bold.woff") format("woff");
 }
 
+@font-face {
+  font-family: "SF UI Display Thin";
+  font-style: normal;
+  font-weight: normal;
+  src: local("SF UI Display Bold"),
+    url("./fonts/sf-ui-display-light.woff") format("woff");
+}
+
 .App {
   font-family: sans-serif;
   text-align: center;
@@ -227,13 +235,13 @@ table {
 
 .coin-price .percent {
   font-family: "SF UI Display Medium";
-  color: #35d03b;
+  /* color: #35d03b; */
   font-size: 25px;
 }
 
 .coin-price .percent span {
-  font-family: "SF UI Display Medium";
-  color: #217c24;
+  font-family: "SF UI Display Thin";
+  /* color: #217c24; */
   font-size: 25px;
   font-weight: 200;
 }
@@ -290,4 +298,16 @@ table {
   bottom: 10px;
   right: 10px;
   pointer-events: none;
+}
+
+.selectLayout .box::after {
+  content: "";
+}
+
+.selectLayout {
+  background-color: rgb(143, 143, 143);
+}
+
+.selectLayout .item {
+  background-color: rgb(37, 35, 35);
 }

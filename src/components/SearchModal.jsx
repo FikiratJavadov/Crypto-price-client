@@ -6,15 +6,8 @@ import { AppContext } from '../pages/CryptoPage';
 import { addCoins, removeCoins } from '../redux/slice/auth/authSlice';
 import { useDispatch, useSelector } from 'react-redux';
 
-export const CustomDialog = () => {
-  const {
-    ByBitCoins,
-    BinanceCoins,
-    SelectedByBitCoins,
-    SelectedBinanceCoins,
-    setSelectedBinance,
-    setSelectedByBit,
-  } = useContext(AppContext);
+export const CustomDialog = ({BinanceCoins, ByBitCoins}) => {
+
 
   const [visible, setVisible] = useState(false);
   const invertVisibility = useCallback(() => setVisible((visible) => !visible), []);
@@ -32,8 +25,6 @@ export const CustomDialog = () => {
 
 
 
-  console.log("bit",SelectedByBitCoins )
-  console.log("binance",SelectedBinanceCoins)
 
   const searchBinanceCoins = (event) => {
     setTimeout(() => {

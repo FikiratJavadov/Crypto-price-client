@@ -13,23 +13,27 @@ export const initLayout = [...initSelectedBinance, ...initSelectedByBit].map(
     i: `${symbol}-${type}`,
     x: 1,
     y: 0,
-    w: 1,
+    w: 2,
     h: 1,
   })
 );
 
+export const getInitLayout = (coins, layout) => {
+  return coins?.map(({ symbol, type }, i) => ({
+    i: `${type}-${symbol}`,
+    ...layout[i],
+  }));
+};
+
 export const parseData = (response) => {
   const data = JSON.parse(response);
-
-  console.log(data);
-
   if (data?.data) {
     return {
       price: +data?.data?.ask1Price,
       type: "ByBitCoins",
       symbol: data?.data?.symbol,
       percent: +data?.data?.price24hPcnt * 100,
-      diff: (+data?.data?.lastPrice * +data?.data?.price24hPcnt),
+      diff: +data?.data?.lastPrice * +data?.data?.price24hPcnt,
     };
   } else {
     return {
@@ -42,4 +46,42 @@ export const parseData = (response) => {
   }
 };
 
-//
+export const baseLayouts = [
+  [
+    { i: "first", x: 0, y: 0, w: 2, h: 1, static: true },
+    { i: "first", x: 0, y: 0, w: 1, h: 1, static: true },
+    { i: "first", x: 1, y: 0, w: 1, h: 1, static: true },
+    { i: "first", x: 3, y: 0, w: 2, h: 1, static: true },
+  ].map((el, i) => ({ ...el, i: el.i + i })),
+
+  [
+    { i: "second", x: 0, y: 0, w: 2, h: 1, static: true },
+    { i: "second", x: 0, y: 0, w: 1, h: 1, static: true },
+    { i: "second", x: 1, y: 0, w: 1, h: 1, static: true },
+    { i: "second", x: 0, y: 0, w: 2, h: 1, static: true },
+  ].map((el, i) => ({ ...el, i: el.i + i })),
+
+  [
+    { i: "third", x: 0, y: 0, w: 1, h: 1, static: true },
+    { i: "third", x: 1, y: 0, w: 1, h: 1, static: true },
+    { i: "third", x: 1, y: 0, w: 2, h: 1, static: true },
+    { i: "third", x: 0, y: 0, w: 2, h: 1, static: true },
+  ].map((el, i) => ({ ...el, i: el.i + i })),
+];
+
+export const baseLayouts2 = [
+  [
+    { x: 0, y: 0, w: 1, h: 1, static: true },
+    { x: 1, y: 0, w: 1, h: 1, static: true },
+    { x: 0, y: 0, w: 1, h: 1, static: true },
+    { x: 1, y: 0, w: 1, h: 1, static: true },
+  ],
+  [
+    { x: 0, y: 0, w: 2, h: 1, static: true },
+    { x: 0, y: 0, w: 2, h: 1, static: true },
+  ],
+];
+
+export const finalLayouts = baseLayouts2.map((layout) => {
+  return layout.map((l, index) => ({ ...l, i: `layout-${index}` }));
+});

@@ -142,9 +142,9 @@ export const GridItem = ({ className, text, w }) => {
                 </div>
 
                 <div className={`coin-body h-full grid gap-5  ${!openChart ? "grid-cols-1" : "grid-cols-2"} justify-center items-center`}>
-                    <div className="coin-price">
+                    <div className={`coin-price`}>
                         <div  className={`price  text-dark dark:text-white ${openChart ? "text-5xl" : "text-7xl"}`}>${price ? price.toFixed(1) : 0}</div>
-                        <div className={`percent ${openChart ? "text-3xl" : "text-5xl"}`}>%{percent ? percent.toFixed(2) : 0} <span>({diff.toFixed(2)}$)</span></div>
+                        <div className={`percent ${openChart ? "text-3xl" : "text-5xl"}  ${percent >= 0 ? "text-green-500" : "text-red-500"}  `}>%{percent ? percent.toFixed(2) : 0} <span className={`${percent >= 0 ? "text-green-700" : "text-red-700"}`}>({diff.toFixed(2)}$)</span></div>
                     </div>
 
                     <div ref={chatWrapperRef} className={`h-[200px] w-full p-5  ${!openChart && "hidden"}`}>
@@ -158,3 +158,7 @@ export const GridItem = ({ className, text, w }) => {
 };
 
 
+
+
+
+//[{w:2,h:2,x:0,y:0,i:"BinanceCoins-BTCUSDT",static:false},{w:2,h:1,x:0,y:1,i:"ByBitCoins-ETHUSDT",static:false}]
